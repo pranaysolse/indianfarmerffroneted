@@ -2,51 +2,51 @@
       <li class="nav-item logo">
         <h3 class="logo-head">
           <i class="fas fa-tractor" style="color: rgb(192, 240, 164)"></i>
-          &nbsp;&nbsp;Framer Portal
+          &nbsp;&nbsp;Farmer Portal
         </h3>
       </li>
       <li class="nav-item">
-        <a href="home.html"
+        <a href="/"
           ><i class="fas fa-home" aria-hidden="true"> &nbsp;&nbsp;Home</i>
         </a>
       </li>
       <li class="nav-item">
-        <a href="weather.html"
+        <a href="/weather"
           ><i class="fas fa-cloud-sun-rain" aria-hidden="true">
             &nbsp;&nbsp;Weather</i
           >
         </a>
       </li>
       <li class="nav-item">
-        <a class="active" href="crop.html"
+        <a class="active" href="/crop"
           ><i class="fa fa-leaf" aria-hidden="true"> &nbsp;&nbsp;Crop-Price</i>
         </a>
       </li>
       <li class="nav-item">
-        <a href="air.html">
+        <a href="/air">
           <i class="fas fa-wind" aria-hidden="true">&nbsp;&nbsp;Air-Quality</i>
         </a>
       </li>
       <li class="nav-item">
-        <a href="about.html">
+        <a href="/about">
           <i class="fas fa-id-badge" aria-hidden="true">&nbsp;&nbsp;About Us</i>
         </a>
       </li>
       <li class="nav-item-icon">
         <div class="icon-bar">
-          <a href="home.html"
+          <a href="/"
             ><i class="fas fa-home fa-xs" aria-hidden="true"></i
           ></a>
-          <a href="weather.html"
+          <a href="/weather"
             ><i class="fas fa-cloud-sun-rain fa-xs" aria-hidden="true"></i
           ></a>
-          <a class="active" href="crop.html"
+          <a class="active" href="/crop"
             ><i class="fa fa-leaf fa-xs" aria-hidden="true"></i
           ></a>
-          <a href="air.html"
+          <a href="/air"
             ><i class="fas fa-wind fa-xs" aria-hidden="true"></i
           ></a>
-          <a href="about.html"
+          <a href="/about"
             ><i class="fas fa-id-badge fa-xs" aria-hidden="true"></i
           ></a>
         </div>
@@ -66,16 +66,42 @@
         animi molestiae alias non doloribus id earum, ad odit consequuntur
         doloremque impedit.
       </p>
-
-      <h4>Query</h4>
-      <button type="button" class="btn btn-info" id="myBtn">
-        <i class="fas fa-search fa-xs"></i>
-        &nbsp;Search
-      </button>
-
+    <div id="query">
+      <h3>Query</h3>
+      <p>You can check crop prices here</p>
+        
+      <div id="myModal" class="modal">
+         <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+                Select State :
+                <select id='list_state'>
+                    <option value="default"></option>
+                </select>
+                Select city :
+                <select id='list_city' >
+                    <option></option>
+                </select>
+                Select station :
+                <select id='list_station'>
+                    <option></option>
+                </select>
+            </form>
+            </div>
+            <button type="submit" id="submit">Submit</button>
+        </div>
+      </div>
+    
       
-       <h4>Visualize</h4>
-       <div class="container">
+        <button type="button" class="btn btn-info" id="myBtn" >
+          Query
+      </button>
+       
+    </div>
+      
+       
+       <div id="container">
+         <h4>Visualize</h4>
           <ol>
             <li ><a href="#" class="ol-it active-1">Graph</a></li>
             <li ><a href="#" class="ol-it">Pie-chart</a></li>

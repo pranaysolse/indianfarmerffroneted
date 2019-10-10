@@ -152,6 +152,8 @@ window.onclick = function(event) {
 
 submit.onclick = async function plot() {
 
+  $('#chart').empty();
+  $('#chart').append('<canvas id="myChart"><canvas>');
     modal.style.display = "none";
   
     data = await getdata();
@@ -190,6 +192,9 @@ async function getdata(){
   var city = $("#list_city").val();
   var state = $("#list_state").val();
   var station = $("#list_station").val();
+
+  $("#chart").before(`<div style="text-align: center;"> State : ${state} &nbsp; City : ${city} &nbsp; Station : ${station}</div>`);
+  document.getElementById("chart").style.textAlign = 'center';
 
   const response = await fetch("/air_data");
   const json = await response.json();

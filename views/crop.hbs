@@ -1,111 +1,104 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 <ul class="nav-list">
-      <li class="nav-item logo">
+    <li class="nav-item logo">
         <h3 class="logo-head">
-          <i class="fas fa-tractor" style="color: rgb(192, 240, 164)"></i>
-          &nbsp;&nbsp;Farmer Portal
+            <i class="fas fa-tractor" style="color: rgb(192, 240, 164)"></i>
+            &nbsp;&nbsp;Framer Portal
         </h3>
-      </li>
-      <li class="nav-item">
-        <a href="/"
-          ><i class="fas fa-home" aria-hidden="true"> &nbsp;&nbsp;Home</i>
+    </li>
+    <li class="nav-item">
+        <a href="home.html"><i class="fas fa-home" aria-hidden="true">
+                &nbsp;&nbsp;Home</i>
         </a>
-      </li>
-      <li class="nav-item">
-        <a href="/weather"
-          ><i class="fas fa-cloud-sun-rain" aria-hidden="true">
-            &nbsp;&nbsp;Weather</i
-          >
+    </li>
+    <li class="nav-item">
+        <a href="weather.html"><i class="fas fa-cloud-sun-rain" aria-hidden="true">
+                &nbsp;&nbsp;Weather</i>
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="active" href="/crop"
-          ><i class="fa fa-leaf" aria-hidden="true"> &nbsp;&nbsp;Crop-Price</i>
+    </li>
+    <li class="nav-item">
+        <a href="crop.html"><i class="fa fa-leaf" aria-hidden="true">
+                &nbsp;&nbsp;Crop-Price</i>
         </a>
-      </li>
-      <li class="nav-item">
-        <a href="/air">
-          <i class="fas fa-wind" aria-hidden="true">&nbsp;&nbsp;Air-Quality</i>
+    </li>
+    <li class="nav-item">
+        <a class="active" href="air.html">
+            <i class="fas fa-wind" aria-hidden="true">&nbsp;&nbsp;Air-Quality</i>
         </a>
-      </li>
-      <li class="nav-item">
-        <a href="/about">
-          <i class="fas fa-id-badge" aria-hidden="true">&nbsp;&nbsp;About Us</i>
+    </li>
+    <li class="nav-item">
+        <a href="about.html">
+            <i class="fas fa-id-badge" aria-hidden="true">&nbsp;&nbsp;About Us</i>
         </a>
-      </li>
-      <li class="nav-item-icon">
+    </li>
+    <li class="nav-item-icon">
         <div class="icon-bar">
-          <a href="/"
-            ><i class="fas fa-home fa-xs" aria-hidden="true"></i
-          ></a>
-          <a href="/weather"
-            ><i class="fas fa-cloud-sun-rain fa-xs" aria-hidden="true"></i
-          ></a>
-          <a class="active" href="/crop"
-            ><i class="fa fa-leaf fa-xs" aria-hidden="true"></i
-          ></a>
-          <a href="/air"
-            ><i class="fas fa-wind fa-xs" aria-hidden="true"></i
-          ></a>
-          <a href="/about"
-            ><i class="fas fa-id-badge fa-xs" aria-hidden="true"></i
-          ></a>
+            <a href="home.html"><i class="fas fa-home fa-xs" aria-hidden="true"></i></i></a>
+            <a href="weather.html"><i class="fas fa-cloud-sun-rain fa-xs" aria-hidden="true"></i></a>
+            <a class="active" href="crop.html"><i class="fa fa-leaf fa-xs" aria-hidden="true"></i></a>
+            <a href="air.html"><i class="fas fa-wind fa-xs" aria-hidden="true"></i></a>
+            <a href="about.html"><i class="fas fa-id-badge fa-xs" aria-hidden="true"></i></a>
         </div>
-      </li>
-    </ul>
-    <div class="header">
-      <i class="fas fa-tractor" style="color: rgb(192, 240, 164)"></i>
-      &nbsp;&nbsp;<b>FARMER PORTAL</b>
+    </li>
+</ul>
+<div class="header">
+    <i class="fas fa-tractor" style="color: rgb(192, 240, 164)"></i>
+    &nbsp;&nbsp;<b>FARMER PORTAL</b>
+</div>
+<div class="main-body">
+
+    <h2 class="main-head">Crop-Price</h2>
+    <hr>
+    <h4>Welcome
+        <hr>
+    </h4>
+    <p>Many a times people aren't aware of the crop prices in different Mandi across India. So we bring you the current
+        crop price present at different places in India</p>
+
+    <p>Just select the state then district and then desired Mandi across India and get the information.</p>
+    <div class="card">
+        <h5 class="card-header">Graph</h5>
+        <div class="card-body">
+            <h5 class="card-title">Check Crop prices in India !!</h5>
+            <p class="card-text">Just Click on Query to see</p>
+            <button type="button" class="btn btn-info" id="myBtn">
+                Query
+            </button>
+        </div>
+        <div id="query_item"></div><br>
+        <div id="chart">
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
-    <div class="main-body">
-      <h2 class="main-head">Crop</h2>
-      <hr />
-      <h4>Introduction</h4>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda,
-        tempora. Tempore officia architecto aperiam asperiores nesciunt labore
-        animi molestiae alias non doloribus id earum, ad odit consequuntur
-        doloremque impedit.
-      </p>
-    <div id="query">
-      <h3>Query</h3>
-      <p>You can check crop prices here</p>
-        
-      <div id="myModal" class="modal">
-         <div class="modal-content">
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <form>
-                Select State :
-                <select id='list_state'>
-                    <option value="default"></option>
-                </select>
-                Select city :
-                <select id='list_city' >
-                    <option></option>
-                </select>
-                Select station :
-                <select id='list_station'>
-                    <option></option>
-                </select>
+                <div class="form-column w-75 p-3">
+                    <div class="col">
+                        <label>State</label>
+                        <select id='list_state' class="custom-select" id="inputGroupSelect01">
+                            <option></option>
+                        </select>
+                    </div><br>
+                    <div class="col">
+                        <label>District</label>
+                        <select id='list_district' class="custom-select" id="inputGroupSelect01">
+                            <option></option>
+                        </select>
+                    </div><br>
+                    <div class="col">
+                        <label>Market</label>
+                        <select id='list_market' class="custom-select" id="inputGroupSelect01">
+                            <option></option>
+                        </select>
+                    </div>
+                </div><br>
+                <button type="button" class="btn btn-primary" id="submit">Submit</button>
             </form>
-            </div>
-            <button type="submit" id="submit">Submit</button>
         </div>
-      </div>
-    
-      
-        <button type="button" class="btn btn-info" id="myBtn" >
-          Query
-      </button>
-       
     </div>
-      
-       
-       <div id="container">
-         <h4>Visualize</h4>
-          <ol>
-            <li ><a href="#" class="ol-it active-1">Graph</a></li>
-            <li ><a href="#" class="ol-it">Pie-chart</a></li>
-            <li ><a href="#" class="ol-it">Maps</a></li>
-          </ol>
-       </div>
-    </div>
+    <br><br>
+</div>

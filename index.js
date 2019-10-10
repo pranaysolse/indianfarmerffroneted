@@ -43,12 +43,12 @@ app.get('/air_data',async (request,response)=>{
     response.json(json);
 });
 
-// app.get('/get_crop_data', async (request, response)=>{
-//     const url = 'https://indianfarmerportal.tech/node2';
-//     const responses = await fetch(url);
-//     const json = await responses.json();
-//     response.json(json);
-// });
+app.get('/get_crop_data', async (request, response)=>{
+    const url = 'https://indianfarmerportal.tech/crop_data';
+    const re = await fetch(url);
+    const json = await re.json();
+    response.json(json);
+});
 
 app.listen(5000, ()=>console.log("listening on port 5000"));
 

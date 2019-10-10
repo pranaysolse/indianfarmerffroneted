@@ -83,7 +83,7 @@ list_city.onchange = async function() {
   var select = list_station;// station;
 
   $("#list_station").empty();
-  for (var i = 0; i < station.length ; i++) {
+  for (var i = 0; i < 1027; i++) {
     if (station[i] != undefined) {
       var option = document.createElement("option");
       var txt = document.createTextNode(station[i]);
@@ -165,7 +165,7 @@ submit.onclick = async function plot() {
           {
             label: "level of pollutant",
             data: data[0],
-            backgroundColor: [],
+            backgroundColor: ["rgba(255, 0, 0, 0.2)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
             borderWidth: 1
           }

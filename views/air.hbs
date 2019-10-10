@@ -1,17 +1,5 @@
-{{!-- 
-<button id='btn' onclick="stt()">load</button>
-State
-<select id='list_state' onchange="req_st()">
-    <option value="select state"></option>
-</select>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-City
-<select id='list_city'onchange="req_ct()">
-    <option value="select city"></option>
-</select>
- --}}
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <ul class="nav-list">
     <li class="nav-item logo">
         <h3 class="logo-head">
@@ -61,35 +49,48 @@ City
 <div class="main-body">
 
     <h2 class="main-head">Air-Quality</h2>
-    You can check air quality here !!!!
+    <hr>
+    <h4>Welcome
+        <hr>
+    </h4>
+    <div class="card">
+        <h5 class="card-header">Graph</h5>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <button type="button" class="btn btn-info" id="myBtn">
+                Query
+            </button>
+        </div>
+        <div><canvas id="myChart" width="600" height="400"></canvas></div>
+    </div>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <form>
-                Select State :
-                <select id='list_state'>
-                    <option value="default"></option>
-                </select>
-                Select city :
-                <select id='list_city' >
-                    <option></option>
-                </select>
-                Select station :
-                <select id='list_station'>
-                    <option></option>
-                </select>
+                <div class="form-column w-75 p-3">
+                    <div class="col">
+                        <label>State</label>
+                        <select id='list_state' class="custom-select" id="inputGroupSelect01">
+                            <option></option>
+                        </select>
+                    </div><br>
+                    <div class="col">
+                        <label>City</label>
+                        <select id='list_city' class="custom-select" id="inputGroupSelect01">
+                            <option></option>
+                        </select>
+                    </div><br>
+                    <div class="col">
+                        <label>Station</label>
+                        <select id='list_station' class="custom-select" id="inputGroupSelect01">
+                            <option></option>
+                        </select>
+                    </div>
+                </div><br>
+                 <button type="button" class="btn btn-primary" id="submit">Submit</button>
             </form>
-            <button type="submit" id="submit">Submit</button>
         </div>
     </div>
-
-    <br>
-    <button type="button" class="btn btn-info" id="myBtn" >
-        Query
-    </button>
-
-    <canvas id="myChart"></canvas>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

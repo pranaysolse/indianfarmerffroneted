@@ -83,7 +83,7 @@ list_city.onchange = async function() {
   var select = list_station;// station;
 
   $("#list_station").empty();
-  for (var i = 0; i < 1027; i++) {
+  for (var i = 0; i < station.length; i++) {
     if (station[i] != undefined) {
       var option = document.createElement("option");
       var txt = document.createTextNode(station[i]);

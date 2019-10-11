@@ -50,6 +50,18 @@ app.get('/get_crop_data', async (request, response)=>{
     response.json(json);
 });
 
+app.get('/weather_data/lat/:lat/lon/:lon', async (request, response)=>{
+    
+    const lat = request.params['lat']
+    const lon = request.params['lon']
+    const url = `https://indianfarmerportal.tech/weather_data/lat/${lat}/lon/${lon}`
+    console.log("url :      " , url)
+    const re = await fetch(url);
+    
+    const json = await re.json();
+    console.log("json " , json);
+    response.json(json);
+});
 app.listen(5000, ()=>console.log("listening on port 5000"));
 
 module.exports = app;

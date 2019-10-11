@@ -150,16 +150,17 @@ submit.onclick = async function plot() {
     $('#chart').append('<canvas id="myChart"><canvas>');
 
     modal.style.display = "none";
-    data = await getdata();
+    datas = await getdata();
+    console.log(datas[0])
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: data[0],
+        labels: datas[0],
         datasets: [
           {
             label: "Price of commodity",
-            data: data[1],
+            data: datas[1],
             backgroundColor: ["rgba(255, 0, 0, 0.2)"],
             borderColor: ["rgba(255, 99, 132, 1)"],
             borderWidth: 1
@@ -177,16 +178,43 @@ submit.onclick = async function plot() {
           ]
         }
       }
+      
     });
-  }
+
+    var div_table = document.getElementById('table2');
+    
+    console.log(datas[0].length);
+    var table1 = document.createElement("TABLE");
+    table1.setAttribute("id", "table1");
+    var th1 = document.createElement('th');
+    th1.innerHTML = "commodities";
+    var th2 = document.createElement('th');
+    th2.innerHTML ="price";
+    tr = table1.insertRow(-1);
+    tr.appendChild(th1)
+    tr.appendChild(th2)
+
+    for(var i = 0;i < datas[0].length;i++){
+      var row1 = table1.insertRow(-1);
+      var td1 = document.createElement('td');
+      td1.innerHTML = datas[0][i];
+      row1.appendChild(td1);
+      var td2 = document.createElement('td');
+      td2.innerHTML = datas[1][i];
+      row1.appendChild(td2)
+    }
+  
+    $("#table2").append(table1);
+}
 
 async function getdata(){
   // debugger;
   var list_district = $("#list_district").val();
   var list_state = $("#list_state").val();
   var list_market = $("#list_market").val();
-
-  $("#chart").before(`<div style="text-align: center;"> State : ${list_state} &nbsp; District : ${list_district} &nbsp; Market : ${list_market}</div>`);
+  $("#temp").remove();
+  $('#table1').remove();
+  $("#chart").before(`<div id="temp" style="text-align: center;"> State : ${list_state} &nbsp; District : ${list_district} &nbsp; Market : ${list_market}</div>`);
   document.getElementById("chart").style.textAlign = 'center';
   const response = await fetch(url);
   const json = await response.json();

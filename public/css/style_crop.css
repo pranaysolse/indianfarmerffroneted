@@ -179,3 +179,8 @@ ol{
 .active-1{
     color: rgb(21, 97, 102);
 }
+
+#tabl1 {
+    overflow-x: auto;
+    border: 1px solid black;
+}

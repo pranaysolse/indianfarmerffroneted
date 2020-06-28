@@ -62,5 +62,5 @@ app.get('/get_crop_data', async (request, response)=>{
 // 
 
 console.log(key)
-app.listen(5000, ()=>console.log("listening on port 5000"));
+app.listen(process.env.PORT || 5000, ()=>console.log("listening on port 5000"));
 module.exports = app;

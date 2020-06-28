@@ -12,7 +12,7 @@ async function state_list() {
   const response = await fetch(url);
   const json = await response.json();
   var st = [];
-  for (var i = 0; i <1207; i++) {
+  for (var i = 0; i <json.length; i++) {
     st[i] = json[i].state;
   }
   var state = Array.from(new Set(st));
@@ -38,7 +38,7 @@ list_state.onchange = async function() {
   const json = await response.json();
   var ct = [];
   
-  for (var i = 0; i < 1207; i++) {
+  for (var i = 0; i < json.length; i++) {
     if ($("#list_state").val() == json[i].state){ 
       ct[i] = json[i].city;    // console.log(ct[i]);
     }
@@ -72,7 +72,7 @@ list_city.onchange = async function() {
   const json = await response.json();
   var stat = [];
   $("#list_station").empty();
-  for (var i = 0; i < 1207; i++) {
+  for (var i = 0; i < json.length; i++) {
     if ($("#list_city").val() == json[i].city){
      stat[i] = json[i].station;
     console.log(stat[i])
@@ -101,7 +101,7 @@ list_city.onclick =  async function() {
   const json = await response.json();
   var stat = [];
   $("#list_station").empty();
-  for (var i = 0; i < 1207; i++) {
+  for (var i = 0; i < json.length; i++) {
     if ($("#list_city").val() == json[i].city){
      stat[i] = json[i].station;
     console.log(stat[i])
@@ -200,7 +200,7 @@ async function getdata(){
   const json = await response.json();
   var y = [];
   var x = [];
-  for (var i = 0; i < 1207; i++) {
+  for (var i = 0; i < json.length; i++) {
     console.log("#", $("#list_station").val());
     console.log("#2:", json[i].station);
     if ($("#list_station").val() == json[i].station) {

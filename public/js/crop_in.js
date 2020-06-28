@@ -11,8 +11,9 @@ const url = "/get_crop_data";
 async function state_list() {
   const response = await fetch(url);
   const json = await response.json();
+  console.log(json);
   var st = [];
-  for (var i = 0; i <4235; i++) {
+  for (var i = 0; i <json.length; i++) {
     st[i] = json[i].state;
   }
   var state = Array.from(new Set(st));
@@ -36,7 +37,7 @@ list_state.onchange = async function() {
   const json = await response.json();
   var dt = [];
   
-  for (var i = 0; i < 4235; i++) {
+  for (var i = 0; i < json.length; i++) {
     if ($("#list_state").val() == json[i].state){ 
       dt[i] = json[i].district;    // console.log(ct[i]);
     }
@@ -68,7 +69,7 @@ list_district.onchange = async function() {
   const json = await response.json();
   var mar = [];
   $("#list_market").empty();
-  for (var i = 0; i < 4235; i++) {
+  for (var i = 0; i < json.length; i++) {
     if ($("#list_district").val() == json[i].district){
      mar[i] = json[i].market;
     }
@@ -96,7 +97,7 @@ list_district.onclick =  async function() {
   const json = await response.json();
   var mar = [];
   $("#list_market").empty();
-  for (var i = 0; i < 4235; i++) {
+  for (var i = 0; i < json.length; i++) {
     if ($("#list_district").val() == json[i].district){
      mar[i] = json[i].market;
     }
@@ -220,7 +221,7 @@ async function getdata(){
   const json = await response.json();
   var y = [];
   var x = [];
-  for (var i = 0; i < 4235; i++) {
+  for (var i = 0; i < json.length; i++) {
     if ($("#list_market").val() == json[i].market) {
 
       x.push(json[i].commodity);

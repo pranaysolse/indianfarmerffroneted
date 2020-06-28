@@ -1,7 +1,9 @@
+require('dotenv').config()
 var express = require('express');
-var fetch = require('node-fetch');
-var path = require('path');
+const axios = require('axios');
+// var fetch = require('node-fetch');
 
+var path = require('path');
 var app = express();
 
 var hbs = require('express-handlebars');
@@ -22,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //home route
 app.use('/', homeRouter);
-
+const key = process.env.KEY
 //air route
 app.use('/air', airRouter);
 
@@ -37,31 +39,28 @@ app.use('/about', aboutRouter);
 
 //fetch air data 
 app.get('/air_data',async (request,response)=>{
-    const url = 'https://indianfarmerportal.tech/node';
-    const re = await fetch(url);
-    const json = await re.json();
-    response.json(json);
+    const url = `https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=${key}&format=json&offset=0&limit=1000`;
+    const re = await axios.get(url);
+    console.log(re.data.records)
+    response.json(re.data.records);
 });
 
 app.get('/get_crop_data', async (request, response)=>{
-    const url = 'https://indianfarmerportal.tech/crop_data';
-    const re = await fetch(url);
-    const json = await re.json();
-    response.json(json);
+    try {
+    const url = `https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=${key}&format=json&offset=0&limit=1000`;
+    const re = await axios.get(url);
+    
+    console.log(re);
+    response.json(re.data.records);
+    }
+    catch{
+        console.log('eror');
+    }
+
 });
 
-app.get('/weather_data/lat/:lat/lon/:lon', async (request, response)=>{
-    
-    const lat = request.params['lat']
-    const lon = request.params['lon']
-    const url = `https://indianfarmerportal.tech/weather_data/lat/${lat}/lon/${lon}`
-    console.log("url :      " , url)
-    const re = await fetch(url);
-    
-    const json = await re.json();
-    console.log("json " , json);
-    response.json(json);
-});
+// 
+
+console.log(key)
 app.listen(5000, ()=>console.log("listening on port 5000"));
-
 module.exports = app;
